@@ -588,7 +588,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
         jLabel22.setText("Tỉ xuất lợi nhuận");
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon tỉ xuất lợi nhuận.png"))); // NOI18N
-        jLabel31.setText("jLabel31");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -734,7 +733,7 @@ public class GD_QuanLy extends javax.swing.JFrame {
                 .addGroup(DoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 111, Short.MAX_VALUE))
                 .addGap(4, 4, 4)
                 .addGroup(DoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBieuDoDuong, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
