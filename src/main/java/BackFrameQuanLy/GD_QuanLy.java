@@ -4,8 +4,12 @@
  */
 package BackFrameQuanLy;
 
+import Main.VARIABLE;
+import NHANVIEN.NHANVIEN;
+import TAIKHOAN.TAIKHOAN;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.sql.SQLException;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -23,16 +27,22 @@ import org.jfree.data.statistics.HistogramDataset;
  * @author Admin
  */
 public class GD_QuanLy extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GD_QuanLy
-     */
+    private VARIABLE variables;
+    private TAIKHOAN tk;
+    private NHANVIEN nv;
     Color ColorFrame ;
     public GD_QuanLy() {
         initComponents();
         ColorFrame = new Color(97,148,153) ;
         showPieChart();
 
+    }
+    
+    public void runGDQL(VARIABLE variables, TAIKHOAN tk) throws SQLException{
+        this.variables = variables;
+        this.tk = tk;
+        this.showInfo();
+        
     }
     
     public void showPieChart(){
@@ -440,23 +450,18 @@ public class GD_QuanLy extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         txtKHmua.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        txtKHmua.setForeground(new java.awt.Color(0, 0, 0));
         txtKHmua.setText("30  Khách mua hàng");
 
         txtLuotMuaSam.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        txtLuotMuaSam.setForeground(new java.awt.Color(0, 0, 0));
         txtLuotMuaSam.setText("120   Lượt mua sắm");
 
         txtDonHoanThanh.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        txtDonHoanThanh.setForeground(new java.awt.Color(0, 0, 0));
         txtDonHoanThanh.setText("25   Đơn Hoàn thành");
 
         txtDonHangTra.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        txtDonHangTra.setForeground(new java.awt.Color(0, 0, 0));
         txtDonHangTra.setText("5   Đơn hàng trả");
 
         txtDonDaHuy.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
-        txtDonDaHuy.setForeground(new java.awt.Color(0, 0, 0));
         txtDonDaHuy.setText("2   Đơn đã hủy");
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon khách hàng (1).png"))); // NOI18N
@@ -669,7 +674,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
         panelBarChart.setBackground(new java.awt.Color(255, 255, 255));
         panelBarChart.setLayout(new java.awt.BorderLayout());
 
-        btnBieuDoCot.setBackground(new java.awt.Color(255, 255, 255));
         btnBieuDoCot.setFont(new java.awt.Font("UTM Avo", 0, 14)); // NOI18N
         btnBieuDoCot.setForeground(new java.awt.Color(114, 149, 153));
         btnBieuDoCot.setText("Biểu đồ cột");
@@ -679,7 +683,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnBieuDoDuong.setBackground(new java.awt.Color(255, 255, 255));
         btnBieuDoDuong.setFont(new java.awt.Font("UTM Avo", 0, 14)); // NOI18N
         btnBieuDoDuong.setForeground(new java.awt.Color(114, 149, 153));
         btnBieuDoDuong.setText("Biểu đồ đường");
@@ -689,7 +692,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
             }
         });
 
-        btnBieuDoTron.setBackground(new java.awt.Color(255, 255, 255));
         btnBieuDoTron.setFont(new java.awt.Font("UTM Avo", 0, 14)); // NOI18N
         btnBieuDoTron.setForeground(new java.awt.Color(114, 149, 153));
         btnBieuDoTron.setText("Biểu đồ tròn");
@@ -746,7 +748,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
 
         DanhsachNV.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Danh sach NV");
 
         javax.swing.GroupLayout DanhsachNVLayout = new javax.swing.GroupLayout(DanhsachNV);
@@ -770,7 +771,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
 
         Bangchamcong.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Bang cham cong");
 
         javax.swing.GroupLayout BangchamcongLayout = new javax.swing.GroupLayout(Bangchamcong);
@@ -794,7 +794,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
 
         KhoHang.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Kho hang");
 
         javax.swing.GroupLayout KhoHangLayout = new javax.swing.GroupLayout(KhoHang);
@@ -818,7 +817,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
 
         ThongBao.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Thong bao");
 
         javax.swing.GroupLayout ThongBaoLayout = new javax.swing.GroupLayout(ThongBao);
@@ -842,7 +840,6 @@ public class GD_QuanLy extends javax.swing.JFrame {
 
         KhuyenMai.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Khuyen mai");
 
         javax.swing.GroupLayout KhuyenMaiLayout = new javax.swing.GroupLayout(KhuyenMai);
@@ -911,15 +908,18 @@ public class GD_QuanLy extends javax.swing.JFrame {
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setText("Quản lý");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(99, 147, 153));
         jButton1.setText("Thông tin");
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("UTM Avo", 0, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(114, 149, 153));
         jButton2.setText("Đăng xuất");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -999,7 +999,25 @@ public class GD_QuanLy extends javax.swing.JFrame {
         showHistogram();
        
     }//GEN-LAST:event_btnBieuDoCotActionPerformed
-
+    
+    private void showInfo() throws SQLException{
+        if(tk.getQuyen().trim().equals("GD")){
+            this.jLabel29.setText("Giám Đốc");
+        }
+        if(tk.getQuyen().trim().equals("QL")){
+            this.jLabel29.setText("Quản Lý");
+        }
+        if(tk.getQuyen().trim().equals("NV")){
+            this.jLabel29.setText("Nhân Viên");
+        }
+        
+        nv = variables.getDB().checkInFo(variables.getStatement(), tk.getTk());
+        
+        if(tk.getTk().equals(nv.getTk())){
+            this.jLabel28.setText(nv.getHo() + " " + nv.getTen());
+        }
+    }
+    
     private void bgDoanhThuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgDoanhThuMousePressed
         bgDoanhThu.setBackground(ColorFrame);
         btnDoanhThu.setForeground(Color.WHITE);
@@ -1028,7 +1046,7 @@ public class GD_QuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_bgDoanhThuMousePressed
 
     private void bgDanhSachNVMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgDanhSachNVMousePressed
-         bgDoanhThu.setBackground(Color.WHITE);
+        bgDoanhThu.setBackground(Color.WHITE);
         btnDoanhThu.setForeground(ColorFrame);
         
         bgDanhSachNV.setBackground(ColorFrame);
@@ -1052,6 +1070,7 @@ public class GD_QuanLy extends javax.swing.JFrame {
         KhoHang.setVisible(false);
         ThongBao.setVisible(false);
         KhuyenMai.setVisible(false);
+        
     }//GEN-LAST:event_bgDanhSachNVMousePressed
 
     private void bgBangChamCongMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgBangChamCongMousePressed
@@ -1163,6 +1182,10 @@ public class GD_QuanLy extends javax.swing.JFrame {
         ThongBao.setVisible(false);
         KhuyenMai.setVisible(true);
     }//GEN-LAST:event_bgKhuyenMaiMousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.variables.openLogIn();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
