@@ -11,12 +11,12 @@ package MON;
 public class MON {
     private String maMon;
     private String tenMon;
-    private int gia;
+    private float gia;
     private String manv;
     public MON() {
     }
 
-    public MON(String maMon, String tenMon, int gia, String manv) {
+    public MON(String maMon, String tenMon, float gia, String manv) {
         this.maMon = maMon;
         this.tenMon = tenMon;
         this.gia = gia;
@@ -41,7 +41,7 @@ public class MON {
         this.tenMon = tenMon;
     }
 
-    public void setGia(int gia) {
+    public void setGia(float gia) {
         this.gia = gia;
     }
 
@@ -53,7 +53,7 @@ public class MON {
         return tenMon;
     }
 
-    public int getGia() {
+    public float getGia() {
         return gia;
     }
     

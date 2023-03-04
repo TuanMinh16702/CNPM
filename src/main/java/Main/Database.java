@@ -11,8 +11,10 @@ import KHUYENMAI.KHUYENMAI;
 import MON.MON;
 import NHANVIEN.NHANVIEN;
 import TAIKHOAN.TAIKHOAN;
+import THONGBAO.THONGBAO;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 public class Database {
     private Connection connection;
     private Statement statement;
@@ -37,7 +39,7 @@ public class Database {
     public TAIKHOAN userAuthenciation(Statement statement, String userName, String userPassword) throws SQLException{
         TAIKHOAN currentUser = null;
         String query = "USE QLCF\n"+
-                "SELECT * FROM TaiKhoann";
+                "SELECT * FROM TAIKHOAN";
         ResultSet result = statement.executeQuery(query);
         while(result.next()) {
             if (userName.equals(result.getString(1)) && userPassword.equals(result.getString(2))) {
@@ -59,7 +61,8 @@ public class Database {
         }
         return nv;
     }
-
+    
+    
     public void postNhanVientoDB(Statement statement, NHANVIEN nv) throws SQLException{
         String query = "USE QLCF \n" +
                 "INSERT INTO NHANVIEN (MANV,HO,TEN,DIACHI,EMAIL,NGAYSINH,GIOITINH,MACH,TK) VALUES(" +
@@ -107,7 +110,7 @@ public class Database {
     
     public void postTaiKhoanttoDB(Statement statement, TAIKHOAN tk) throws SQLException{
         String query = "USE QLCF\n" +
-                "INSERT INTO TaiKhoann(TK,MK,MACHUCVU) VALUES("+
+                "INSERT INTO TAIKHOAN(TK,MK,MACHUCVU) VALUES("+
                 "N'" + tk.getTk() +"' " +
                 "N'" + tk.getMk() +"' " +
                 "N'" + tk.getQuyen() + "');";
@@ -124,7 +127,7 @@ public class Database {
     
     public void postCTKMtoDB(Statement statement, CT_KM ctkm) throws SQLException{
         statement.executeUpdate("USE QLCF\n"+
-                "INSERT INTO CT-KM (MAMON,MAKM,MAGD,NGAYBD,NGAYKT,PHANTRAM) VALUES(" +
+                "INSERT INTO CT_KM (MAMON,MAKM,MAGD,NGAYBD,NGAYKT,PHANTRAM) VALUES(" +
                 "N'" + ctkm.getMaMon() + "', " +
                 "N'" + ctkm.getMaKM() +"', " +
                 "N'" + ctkm.getMaGD() +"', " +
@@ -133,10 +136,30 @@ public class Database {
                 "N'" + ctkm.getPhantram() + "');");
     }
     
-    public void updateNhanVientoDB(Statement statement, String manv, String newManv) throws SQLException{
-        statement.executeUpdate("UPDATE NHANVIEN SET MANV = '" + newManv + ", WHERE MANV = '" + manv+ "'" );
+    public void postThongBaotoDB(Statement statement, THONGBAO tb, String ngaytb) throws SQLException{
+        statement.executeUpdate("USE QLCF\n" +
+                "INSERT INTO THONGBAO (MATB,NOIDUNGTB) VALUES(" +
+                "N'" + tb.getMaTB() + "', " +
+                "N'" + tb.getNoidung() + "');");
+        
+        statement.executeUpdate("USE QLCF\n" +
+                "INSERT INTO CT_THONGBAO (MATB,MAGĐ,NGAYTB) VALUES(" +
+                "N'" + tb.getMaTB() + "', " +
+                "'"+ "GD" + "', " +      
+                ngaytb + ");");
     }
     
+    public void updateNhanVientoDB(Statement statement, String manv, String ho, String ten) throws SQLException{
+        statement.executeUpdate("UPDATE NHANVIEN " +
+                "SET " + 
+                "HO = '" + ho + "', " +
+                "TEN ='" + ten + "', "+     
+                " WHERE MANV = '" + manv+ "'" );
+    }
+    
+    public void updateMatKhautoDB(Statement statement, String tk, String newMK ) throws SQLException{
+        statement.executeUpdate("UPDATE TAIKHOAN SET MK='" + newMK + "' WHERE TK='" + tk+ "'");
+    }
     public void deleteNhanVien(Statement statement, String manv) throws SQLException{
         statement.execute("DELETE FROM NHANVIEN WHERE MANV ='" + manv + "'");
     }
@@ -146,11 +169,22 @@ public class Database {
     }
     
     public void deleteCTHD(Statement statement, String soHD, String maMon) throws SQLException{
-        statement.execute("DELETE FROM CTHĐ WHERE SOHD ='" + soHD + "' AND MAMON ='" + maMon + "'");
+        statement.execute("DELETE FROM CT_HOADON WHERE SOHD ='" + soHD + "' AND MAMON ='" + maMon + "'");
     }
     
     public void deleteMon(Statement statement, String maMon) throws SQLException{
         statement.execute("DELETE FROM MON WHERE MAMON ='" + maMon + "'");
+    }
+    
+    public void deleteThongBao(Statement statement, String matb) throws SQLException{        
+        statement.execute("DELETE FROM CT_THONGBAO WHERE MATB='" + matb +"'");
+        statement.execute("DELETE FROM THONGBAO WHERE MATB='" + matb +"'");
+
+    }
+    
+    public void deleteNguyenLieu(Statement statement, String manl) throws SQLException{
+        statement.execute("DELETE FROM CT_MON WHERE MANGUYENLIEU='" +manl+"'");
+        statement.execute("DELETE FROM NGUYENLIEU WHERE MANGUYENLIEU='" +manl+"'");
     }
 }
 

@@ -11,20 +11,16 @@ package NGUYENLIEU;
 public class NGUYENLIEU {
     private String maNL;
     private String tenNL;
-    private String ghichu;
-    private String manv;
+    private String donvi;
+
     public NGUYENLIEU() {
     }
 
-    public String getManv() {
-        return manv;
+    public NGUYENLIEU(String maNL, String tenNL, String donvi) {
+        this.maNL = maNL;
+        this.tenNL = tenNL;
+        this.donvi = donvi;
     }
-
-    public void setManv(String manv) {
-        this.manv = manv;
-    }
-
-    
 
     public String getMaNL() {
         return maNL;
@@ -34,8 +30,8 @@ public class NGUYENLIEU {
         return tenNL;
     }
 
-    public String getGhichu() {
-        return ghichu;
+    public String getDonvi() {
+        return donvi;
     }
 
     public void setMaNL(String maNL) {
@@ -46,15 +42,10 @@ public class NGUYENLIEU {
         this.tenNL = tenNL;
     }
 
-    public void setGhichu(String ghichu) {
-        this.ghichu = ghichu;
+    public void setDonvi(String donvi) {
+        this.donvi = donvi;
     }
-
-    public NGUYENLIEU(String maNL, String tenNL, String ghichu, String manv) {
-        this.maNL = maNL;
-        this.tenNL = tenNL;
-        this.ghichu = ghichu;
-        this.manv = manv;
-    }
+    
+    
     
 }

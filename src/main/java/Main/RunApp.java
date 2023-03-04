@@ -17,13 +17,13 @@ import javax.swing.JOptionPane;
 public class RunApp extends javax.swing.JFrame {
     private VARIABLE variables;
     private Login login;
-    
+    private Login login1;
     public RunApp() throws SQLException {
         initComponents();
         this.variables = variables;
         this.run();
     }
-        
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

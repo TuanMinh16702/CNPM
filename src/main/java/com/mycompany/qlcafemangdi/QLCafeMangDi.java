@@ -5,13 +5,21 @@
 
 package com.mycompany.qlcafemangdi;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Admin
  */
 public class QLCafeMangDi {
-
+    private static DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        LocalDateTime ldt = LocalDateTime.now();
+        ldt.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String date = ldt.format(format).toString();
+        System.out.println(date.getClass().getName());
     }
 }

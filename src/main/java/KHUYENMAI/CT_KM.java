@@ -14,20 +14,20 @@ public class CT_KM {
     private String maMon;
     private String maKM;
     private String maGD;
-    private Date ngayBD;
-    private Date ngayKT;
+    private String ngayBD;
+    private String ngayKT;
     private float phantram;
 
-    public CT_KM() {
-    }
-
-    public CT_KM(String maMon, String maKM, String maGD, Date ngayBD, Date ngayKT, float phantram) {
+    public CT_KM(String maMon, String maKM, String maGD, String ngayBD, String ngayKT, float phantram) {
         this.maMon = maMon;
         this.maKM = maKM;
         this.maGD = maGD;
         this.ngayBD = ngayBD;
         this.ngayKT = ngayKT;
         this.phantram = phantram;
+    }
+
+    public CT_KM() {
     }
 
     public String getMaMon() {
@@ -42,11 +42,11 @@ public class CT_KM {
         return maGD;
     }
 
-    public Date getNgayBD() {
+    public String getNgayBD() {
         return ngayBD;
     }
 
-    public Date getNgayKT() {
+    public String getNgayKT() {
         return ngayKT;
     }
 
@@ -66,16 +66,18 @@ public class CT_KM {
         this.maGD = maGD;
     }
 
-    public void setNgayBD(Date ngayBD) {
+    public void setNgayBD(String ngayBD) {
         this.ngayBD = ngayBD;
     }
 
-    public void setNgayKT(Date ngayKT) {
+    public void setNgayKT(String ngayKT) {
         this.ngayKT = ngayKT;
     }
 
     public void setPhantram(float phantram) {
         this.phantram = phantram;
     }
+
+    
     
 }

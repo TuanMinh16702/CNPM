@@ -7,6 +7,9 @@ package App;
 import TAIKHOAN.TAIKHOAN;
 import Main.VARIABLE;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -183,7 +186,7 @@ public class Login extends javax.swing.JFrame {
             TAIKHOAN tk;
             try {
                 tk = variables.getDB().userAuthenciation(variables.getStatement(), username, password);
-                System.out.println(tk);
+                System.out.println(java.time.LocalDateTime.now().getMonthValue()); 
                 if(tk != null){
                     jTextField1.setText("");
                     jPasswordField1.setText("");
