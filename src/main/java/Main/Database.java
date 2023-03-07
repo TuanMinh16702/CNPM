@@ -24,9 +24,9 @@ public class Database {
     
     public Connection connectToDB() throws SQLException{
         Connection con = null;
-        String url = "jdbc:sqlserver://localhost:1433;instance=LAPTOP-E0FD0UKT\\MSSQLSERVER06;databaeName=QLCF;encrypt=true;trustServerCertificate=true";
+        String url = "jdbc:sqlserver://localhost:1433;instance=LAPTOP-PGGF1164\\MSSQLSERVER06;databaeName=QLCF;encrypt=true;trustServerCertificate=true";
         String user = "sa";
-        String password = "qwerty";
+        String password = "mon704412";
         con = DriverManager.getConnection(url, user, password);
         if(con != null){
             System.out.println("Kết nối Thành công");
@@ -149,14 +149,16 @@ public class Database {
                 ngaytb + ");");
     }
     
-    public void updateNhanVientoDB(Statement statement, String manv, String ho, String ten) throws SQLException{
-        statement.executeUpdate("UPDATE NHANVIEN " +
-                "SET " + 
-                "HO = '" + ho + "', " +
-                "TEN ='" + ten + "', "+     
-                " WHERE MANV = '" + manv+ "'" );
+    public void  updateNhanVien(String tenNV) throws SQLException {
+        statement.executeUpdate("Update NHANVIEN SET TENNV='" +tenNV +
+                                "HO='" +
+                                "TEN='" + 
+                                "DIACHI=' " +
+                                "EMAIL=' " +
+                                "NGAYSINH=?"
+                                + "GIOITINH=?"
+                                + " WHERE MANV='" +  "'");
     }
-    
     public void updateMatKhautoDB(Statement statement, String tk, String newMK ) throws SQLException{
         statement.executeUpdate("UPDATE TAIKHOAN SET MK='" + newMK + "' WHERE TK='" + tk+ "'");
     }

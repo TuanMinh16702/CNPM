@@ -101,6 +101,19 @@ public class VARIABLE {
         return hoten;
     }
     
+    public String getTENNHANVIEN(String manv) throws SQLException{
+        ResultSet rs = statement.executeQuery("SELECT * FROM NHANVIEN ");
+        String ten = "";
+        while(rs.next()){
+            if(manv.equals(rs.getString(1))){
+                NHANVIEN NV = new NHANVIEN(rs.getString(1),rs.getNString(2),rs.getNString(3),rs.getNString(4),rs.getNString(5),rs.getDate(6),rs.getInt(7),rs.getString(8),rs.getString(9));
+                ten =  rs.getString(3);
+            }
+                      
+        }
+        return ten;
+    }
+    
     public String getChucVu(String manv) throws SQLException{
         ResultSet rs = statement.executeQuery("USE QLCF\n" +
                                                 "SELECT MANV , TK.TK, CV.TENCHUCVU\n" +
@@ -140,6 +153,8 @@ public class VARIABLE {
         }
         return nv;
     }
+    
+    
     
     public String getLyDoKhuyenMai(String makm) throws SQLException{
         ResultSet rs= statement.executeQuery("USE QLCF\n" +
@@ -232,6 +247,27 @@ public class VARIABLE {
         }
         return this.ccm.getListCC();
     }
+    
+    public List<CHAMCONG> sortSelectionItemDSNV (String sql ) {
+        List<CHAMCONG> lc = new ArrayList<>() ;
+        try {
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while(rs.next()){
+                CHAMCONG cc = new CHAMCONG();
+                cc.setMabcc(rs.getString("MABCC"));
+                cc.setNgaychamcong(rs.getString("NGAYCHAMCONG"));
+                cc.setGhichu(rs.getString("GHICHU"));
+                cc.setManv(rs.getString("MANV"));
+                cc.setSogiolamviec(rs.getInt("SOGIOLAMVIEC"));
+                lc.add(cc) ;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VARIABLE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lc ;      
+    }
+     
     
     public List<THONGBAO> loadingThongBao() throws SQLException{
         this.tbm = new THONGBAOMANAGER();
